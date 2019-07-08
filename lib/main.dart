@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import './pages/auth.dart';
 import './pages/products.dart';
 import './pages/products_admin.dart';
 import './pages/product.dart';
@@ -33,11 +34,12 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       theme:
           ThemeData(primarySwatch: Colors.pink, accentColor: Colors.pinkAccent),
-      // home: AuthPage(),
+      home: AuthPage(),
       routes: {
-        '/': (BuildContext context) =>
+        '/products': (BuildContext context) =>
             ProductsPage(_products),
         '/admin': (BuildContext context) => ProductsAdminPage(_addProduct, _deleteProduct),
       },
