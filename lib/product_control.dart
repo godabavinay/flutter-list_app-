@@ -10,7 +10,7 @@ class ProductControl extends StatelessWidget {
     return RaisedButton(
             child: Text('Add Product'),
             onPressed: () {
-              addProduct('Ted Ice Cream');
+              addProduct({'title': 'Ted Ice Cream', 'imageUrl': 'assets/ice-cream.jpg'});
             },
           );
   }
