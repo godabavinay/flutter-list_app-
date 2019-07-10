@@ -12,7 +12,13 @@ class Products extends StatelessWidget {
       child: Column(
         children: <Widget>[
           Image.asset(products[index]['image']),
-          Text(products[index]['title']),
+          Container(
+            padding: EdgeInsets.only(top: 10),
+            child: Text(
+              products[index]['title'],
+              style: TextStyle(fontSize: 26, fontFamily: 'Nunito'),
+            ),
+          ),
           ButtonBar(
             alignment: MainAxisAlignment.center,
             children: <Widget>[
