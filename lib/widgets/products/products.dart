@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../products/price_tag.dart';
+
 class Products extends StatelessWidget {
   final List<Map<String, dynamic>> products;
 
@@ -24,25 +26,15 @@ class Products extends StatelessWidget {
                 SizedBox(
                   width: 8,
                 ),
-                Container(
-                  padding: EdgeInsets.symmetric(horizontal: 6, vertical: 2.5),
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(5),
-                      color: Theme.of(context).accentColor),
-                  child: Text(
-                    'Rs ' + products[index]['price'].toString() + '/-',
-                    style: TextStyle(color: Colors.white),
-                  ),
-                )
+                PriceTag(products[index]['price'].toString()),
               ],
             ),
           ),
           Container(
             padding: EdgeInsets.symmetric(horizontal: 6, vertical: 2.5),
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(4),
-              border: Border.all(color: Colors.grey, width: 1)
-            ),
+                borderRadius: BorderRadius.circular(4),
+                border: Border.all(color: Colors.grey, width: 1)),
             child: Text('Cream Stone, MVP Colony'),
           ),
           ButtonBar(
