@@ -12,6 +12,46 @@ class _AuthPageState extends State<AuthPage> {
   String _passwordValue;
   bool _acceptTerms = false;
 
+  Widget _buildEmailTextField() {
+    return TextField(
+      decoration: InputDecoration(labelText: 'E-Mail'),
+      keyboardType: TextInputType.emailAddress,
+      onChanged: (String value) {
+        setState(() {
+          _emailValue = value;
+        });
+      },
+    );
+  }
+
+  Widget _buildPasswordTextField() {
+    return TextField(
+      decoration: InputDecoration(labelText: 'Password'),
+      obscureText: true,
+      onChanged: (String value) {
+        setState(() {
+          _passwordValue = value;
+        });
+      },
+    );
+  }
+
+  Widget _buildAcceptSwitch() {
+    return SwitchListTile(
+      value: _acceptTerms,
+      onChanged: (bool value) {
+        setState(() {
+          _acceptTerms = value;
+        });
+      },
+      title: Text('Accept Terms'),
+    );
+  }
+
+  void _submitForm() {
+    Navigator.pushReplacementNamed(context, '/products');
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,44 +64,18 @@ class _AuthPageState extends State<AuthPage> {
           child: SingleChildScrollView(
             child: Column(
               children: <Widget>[
-                TextField(
-                  decoration: InputDecoration(labelText: 'E-Mail'),
-                  keyboardType: TextInputType.emailAddress,
-                  onChanged: (String value) {
-                    setState(() {
-                      _emailValue = value;
-                    });
-                  },
-                ),
+                _buildEmailTextField(),
                 SizedBox(
                   height: 5,
                 ),
-                TextField(
-                  decoration: InputDecoration(labelText: 'Password'),
-                  obscureText: true,
-                  onChanged: (String value) {
-                    setState(() {
-                      _passwordValue = value;
-                    });
-                  },
-                ),
-                SwitchListTile(
-                  value: _acceptTerms,
-                  onChanged: (bool value) {
-                    setState(() {
-                      _acceptTerms = value;
-                    });
-                  },
-                  title: Text('Accept Terms'),
-                ),
+                _buildPasswordTextField(),
+                _buildAcceptSwitch(),
                 SizedBox(
                   height: 10.0,
                 ),
                 RaisedButton(
                   child: Text('LOGIN'),
-                  onPressed: () {
-                    Navigator.pushReplacementNamed(context, '/products');
-                  },
+                  onPressed: _submitForm,
                 ),
               ],
             ),
